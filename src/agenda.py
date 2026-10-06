@@ -1,4 +1,4 @@
-"""Programa principal: menú de consola de la agenda (versión 1)."""
+"""Programa principal: menú de consola de la agenda (versión 2)."""
 
 from src.contactos import (
     crear_agenda,
@@ -20,15 +20,17 @@ def mostrar_menu():
     print("3. Buscar por teléfono")
     print("4. Eliminar contacto")
     print("5. Mostrar todos")
-    print("6. Salir")
+    print("6. Mostrar todos (A-Z)")
+    print("7. Mostrar todos (Z-A)")
+    print("8. Salir")
 
 
 def pedir_opcion():
-    """Pide un número del 1 al 6 y lo valida."""
-    texto = input("Elige una opción (1-6): ").strip()
-    if texto in ("1", "2", "3", "4", "5", "6"):
+    """Pide un número del 1 al 8 y lo valida."""
+    texto = input("Elige una opción (1-8): ").strip()
+    if texto in ("1", "2", "3", "4", "5", "6", "7", "8"):
         return texto
-    print("Opción no válida, escribe un número del 1 al 6.")
+    print("Opción no válida, escribe un número del 1 al 8.")
     return ""
 
 
@@ -85,6 +87,10 @@ def main():
         elif opcion == "5":
             print(mostrar_contactos(agenda))
         elif opcion == "6":
+            print(mostrar_contactos(agenda, "az"))
+        elif opcion == "7":
+            print(mostrar_contactos(agenda, "za"))
+        elif opcion == "8":
             guardar_contactos(agenda)
             print("Agenda guardada. ¡Adiós!")
             salir = True
